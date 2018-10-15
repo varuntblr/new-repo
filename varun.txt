@@ -12,18 +12,22 @@
     right: 16px;
     font-size: 18px;
 }
-
-img { 
-    width: 100%;
-    height: auto;
-    opacity: 0.3;
+rwgkjhsfgsjghsoighoshoghsngsohdfsondvnsdvnsnvnsobdoubsbfbsbdvobhsovbsbvsvbusvbsbvuuirindsnvcdnvi
+imdrhdfhcfg
+https://github.com/varuntblr/hello.git
+tml>
+<head>
+<style>
+.container {
+    position: relative;
 }
-</style>
-</head>
-<body>
 
-<h2>Image Text</h2>
-<p>Add some text to an image in the top right corner:</p>
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+}
 
 <div class="container">
   <img src="img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300">
