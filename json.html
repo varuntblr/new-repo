@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>json</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id="one"></p>
+    <p id="two"></p>
+    <p id="three"></p>
+    <p id="four"></p>
+</body>
+<script>
+    // converting json values to object
+    var txt = '{ "name":"Varun", "age":"24","id":"123" }'
+    var obj = JSON.parse(txt);
+    document.getElementById("one").innerHTML=obj.name + " " + obj.age + " " + obj.id;
+    //converting object values to json
+    var txt2 = {name:"renold", age:23, id:"456"};
+    var myJSON = JSON.stringify(txt2);
+    document.getElementById("two").innerHTML=myJSON;
+    // print json array
+    var data = '[{"id":"1","tagname":"apple"},{"id":"2","tagname":"orange"},{"id":"3","tagname":"banana"},{"id":"4","tagname":"watermelon"},{"id":"5","tagname":"pineapple"}]'
+    var tx3 = JSON.parse(data);
+    $.each(tx3, function(i){            // function to select first array
+        $.each(tx3[i], function(j,item){          // function to select array elements
+            var abc = j +" "+ item + " ";
+           $("#three").append(abc);             // printing array elements
+        });
+        $("#three").append("<br>");             
+    });
+
+    // adding new elements to json array
+    var xyz = [{name:"anjana",age:32,id: "456"}];
+    var p = {name:"sabu",age:54,id:"879"};         // array to be pushed into the existing array
+    xyz.push(p);              // pushing new elements to the current array xyz
+    console.log(xyz);
+    var tx4 = JSON.stringify(xyz);
+    document.getElementById("four").innerHTML=tx4;          // showing the final result
+
+    
+
+</script>
+</html>
