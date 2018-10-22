@@ -1,0 +1,44 @@
+<!DOCYTPE html>
+<html>
+    <head>
+        <title>InputMask</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+        
+        <form>
+           
+            <input name="date" type="text">
+  
+        </form>
+        <script>
+      
+
+          $('input[name="date"]').mask('ab/xy/0000 00:00:00', {
+    translation: {
+      'x': {
+        pattern: /0?[1-9]|1[012]/, optional: true
+      },
+      'y':{
+          pattern: /[0-2]/, optional: true
+      },
+      'a': {
+        pattern: /[0-3]/, optional: true
+      },
+      'b': {
+        pattern: /[0-9]/, optional: true
+      }
+
+    }
+  });
+
+        </script>
+        <body>
+  
+
+        </body>
+        
+        
+    </head>
+</html>

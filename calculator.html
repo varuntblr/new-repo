@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<title>calculator</title>
+<style>
+#container{
+    width: 100%;
+    height: 100%;
+}
+.button{                             /* styling buttons */
+    width:50px;
+    height: 30px;
+    background-color: #e7e7e7; color: black;
+    border: 0.1px solid grey;
+    cursor: pointer;
+    margin-bottom: 1px;
+
+}
+.operator{                              /* styling operators */
+    width:50px;
+    height: 30px;
+    background-color: #e7e7e7; color: black;
+    border: 0.1px solid grey;
+    cursor: pointer;
+}
+.C{                                      /* styling reset button */
+    width:50px;
+    height: 30px;
+    background-color: #e7e7e7; color: black;
+    border: 0.1px solid grey;
+    cursor: pointer;
+} 
+#equals{                                   /* styling equal button */
+    width:212px;
+    height: 30px;
+    background-color: #e7e7e7; color: black;
+    border: 0.1px solid grey;
+    cursor: pointer;
+    margin-top: 5px;
+
+}
+#infield{                                /* styling printing area */
+    width:192px;
+    height: 20px;
+    text-align: right;
+    background-color:antiquewhite;
+    padding: 10px;
+    border: 0.5px solid gray;
+    margin-bottom: 5px;
+}
+#calculator{      
+    width: 300px;
+    margin:auto;
+    margin-top: 100px;
+}
+body{                                    /* styling body color */
+    background-color: aliceblue;
+}
+</style>
+<body>
+    <div id="container">
+        <div id="calculator">
+            <div id="infield"></div>
+            <div id="grid">
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="operator">+</button><br>
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="operator">-</button><br>
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="operator">*</button><br>
+                <button class="button">0</button>
+                <button class="button">.</button>
+                <button class="C">CE</button>
+                <button class="operator">/</button>
+            </div>
+            <button id="equals">=</button>
+        </div>
+    </div>
+    </body>
+    <script>
+        var flag=false;
+        var num="";
+        $(document).ready(function(){
+            $(".button").click(function(){           //function for number values
+                var val = $(this).text();
+                num = num + val;
+                $("#infield").html( $("#infield").html()+val);
+                flag = true;
+                val = "";
+            });
+            $(".operator").click(function(){        //function for operator values
+                if(flag)
+                {
+                var op = $(this).text();
+                num = num + op;
+                $("#infield").html($("#infield").html() + op);
+                flag = false
+                op = "";
+                }
+            });
+            $("#equals").click(function(){         //function for final value
+                var equal = eval(num);
+                $("#infield").html(equal);
+                equal  ="";
+                
+            });
+            $(".C").click(function(){              //function for reseting
+                $("#infield").html("");
+                num="";
+                op = "";
+                val = "";
+            });        
+        });
+    </script>
