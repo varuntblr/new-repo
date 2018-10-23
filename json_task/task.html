@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="source.js"></script>
+	<link rel="stylesheet" type="text/css" href="task.css">
+	<title>Task</title>
+
+</head>
+<body>
+<div id="container">
+	<div id="scrollbody"></div>
+	<div id="details">
+		<ul></ul>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	var data = jsontext.data;
+	data.dates.forEach(function(dates, index){
+		//console.log(index, dates.date);
+		var str = '<div class="card" index="'+dates._id+'"><span>'+moment(dates.date).format("DD/MM/YYYY - hh:mm:ss a")+'</span><div></div></div>'
+		$("#scrollbody").append(str)
+	});
+
+	$(".card").click(function(){
+		var card = $(this);
+		console.log("card", card);
+		var index = card.attr("index");
+		console.log(index, data.dates[index]);
+		var str;
+		var slots = data.dates[index].slots;
+		var list = card.children("div");//$("#details ul");
+		console.log(card.children("div"));
+		list.html("");
+		slots.forEach(function(slot, index){
+			
+			str = '<li>'+moment(slot.time_start, "HH:mm").format("hh:mm a")+' - '+moment(slot.time_end, "HH:mm").format("hh:mm a")+'</li>';
+			list.append(str);	
+		})
+		list.slideToggle();
+		//$("#details ul").html('<li>'+data.dates[index]._id+'</li>')
+	})
+
+	$(".card div").on('click', 'li', function(){
+		alert($(this).html());
+	})
+
+</script>
+
+</html>

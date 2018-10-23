@@ -1,0 +1,49 @@
+body{
+	padding: 0;
+	margin: 0;
+	height: 98vh;
+	width: 100vw;
+}
+
+#container{
+	height: inherit;
+	width: inherit;	
+}
+
+#scrollbody{
+	margin-top: 10px;
+	width: 100%;
+	height: 250px;
+	white-space: nowrap;
+	overflow-y: scroll;
+
+}
+
+.card{
+	height: 220px;
+	width: 200px;
+	display: inline-block;
+	box-shadow: 3px 3px 5px grey;
+	font-size: 12px;
+	margin: 5px;
+	background: aliceblue;
+	border-radius: 5px;
+	overflow: scroll;
+}
+
+.card div{
+	display: none;
+	font-size: 15px;
+	width: 80%;
+	margin:auto;
+}
+
+.card span{
+	border-bottom: 1px solid black;
+	display: block;
+	height: 25px;
+	text-align: center;
+	margin-bottom: 5px;
+	-moz-user-select: none;
+	position: relative;
+}
