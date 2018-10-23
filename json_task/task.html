@@ -32,7 +32,14 @@
 		var index = card.attr("index");
 		console.log(index, data.dates[index]);
 		var str;
-		var slots = data.dates[index].slots;
+		var slotes;
+		data.dates.forEach(function(date){
+			console.log("date", date);
+			if(date._id == index){
+				slots = date.slots
+			}
+		})
+		//var slots = data.dates[index].slots;
 		var list = card.children("div");//$("#details ul");
 		console.log(card.children("div"));
 		list.html("");
