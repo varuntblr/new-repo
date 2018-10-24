@@ -1,0 +1,70 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Task 2</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="source.js"></script>
+</head>
+<style>
+    .sub1{
+        overflow: auto;
+        white-space: nowrap;
+    }
+    .one{
+        width: 150px;
+        height: 50px;
+        background-color:#D1CFCF;
+        scroll-behavior: auto;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+    }
+    .sub2{
+        cursor: pointer;
+    }
+</style>
+ <script>
+    var abc;
+    $(document).ready(function(){
+        var x =json.data;                                                                 // accessing Json source file
+        x.dates.forEach(function(first){                                                  // looping each element in the array
+            var str = moment(first.date).format("DD/MM/YYYY");
+            var div = "<div class = 'one' id = '"+first._id+"'>"+str+ "</div>";
+            $(".sub1").append(div);
+        });
+        $(".one").click(function(){                                                        //function for printing slots
+            $(".sub2").html("");  
+            var one = $(this);
+            var index = one.attr("id");
+            var temp;
+            x.dates.forEach(function(a){                                                    
+                if(a._id == index){
+                    temp = a.slots;                                                         //storing slots elements into a variable temp
+                }
+            });
+            temp.forEach(function(y,z){                                                     // looping each element inside temp vaiable
+                    var t ="<li class ='li' >"+ moment(y.time_start, "HH:mm").format("hh:mm a") +" - "+ moment(y.time_end, "HH:mm").format("hh:mm a") + "---ID---"+y._id+"</li>"
+                     $(".sub2").append(t);
+                });
+                });
+                $(".sub2").on('click', 'li', function(){                                    //function for alerting dates
+                    alert($(this).html());
+                });
+            });
+</script>
+<body>
+    <div class="container"></div>
+        <div class="sub1"></div>
+        <div class="sub2">
+            <ul> </ul>
+        </div>
+            
+</body>
+</html>
