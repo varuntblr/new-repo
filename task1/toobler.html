@@ -13,10 +13,6 @@
         <script type="text/javascript" src="/home/toobler/Desktop/task/new-repo/task1/slick-master/slick/slick.js"></script>
 </head>
 <style>
-    @font-face{
-        font-family: "Montserrat",sans-serif;
-        src: url("htt://fonts.googleapis.com/css?family=Montserrat");
-    }
     .navbar-brand{
         width: 123px;
         height: 29.75; 
@@ -556,7 +552,7 @@
              </div>
         </div>
     </section>
-<!-- footer -->
+<!-- footer and scroll button -->
     <section class="container-fluid" style="color:#61666a;">
         <div class="row">
             <div class="col-sm ml-5 mt-3 mb-4">© 2018 Toobler Technologies. Privacy Policy</div>
@@ -568,6 +564,7 @@
             <a href="#top"> <img class="array" src="arrow.png" style="width:30px; height:30px; position: fixed; bottom: 30px; right: 5px;"></a>
         </div>
     </section>
+<!-- chat box -->
     <section class="container-fluid">
         <img src="chatbox.png" class="open-button" onclick="openForm()" style="width:40px; height:40px; position:fixed; bottom: 60px; right: 10px; cursor: pointer;">
         <div class="chat-popup" id="myForm">
@@ -579,7 +576,6 @@
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
         </div>
-        
         <script>
             function openForm() {
                 document.getElementById("myForm").style.display = "block";
@@ -588,8 +584,7 @@
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
             }
-        </script>
-            
+        </script> 
     </section>
 <!-- jquery for carousel images -->
 <script>
