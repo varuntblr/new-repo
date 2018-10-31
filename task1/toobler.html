@@ -9,8 +9,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/home/toobler/Desktop/new/varun/slick-master/slick/slick.css"/>
-        <script type="text/javascript" src="/home/toobler/Desktop/new/varun/slick-master/slick/slick.js"></script>
+        <link rel="stylesheet" type="text/css" href="/home/toobler/Desktop/task/new-repo/task1/slick-master/slick/slick.css"/>
+        <script type="text/javascript" src="/home/toobler/Desktop/task/new-repo/task1/slick-master/slick/slick.js"></script>
 </head>
 <style>
     @font-face{
@@ -204,6 +204,28 @@
     .dropdown:hover .dropdown-menu {
         display: block;
     }
+    .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
+    .form-container textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        resize: none;
+        min-height: 200px;
+    }
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+    }
     @media only screen and (max-width: 600px) and (min-width: 500px) {
     .pics div img {
         margin-left: 100px !important;
@@ -276,8 +298,8 @@
                 </div>
                 </div>
              </div>
-             <div class="text center">
-                 <a href="#banner"><img src="downto.png" style="width: 20px;height: 20px;"></a>
+             <div class="text center pt-2 pb-2">
+                 <a href="#banner"><img src="down.png" style="width: 30px;height: 30px;"></a>
              </div>
         </div>
     </section>
@@ -546,6 +568,29 @@
             <a href="#top"> <img class="array" src="arrow.png" style="width:30px; height:30px; position: fixed; bottom: 30px; right: 5px;"></a>
         </div>
     </section>
+    <section class="container-fluid">
+        <img src="chatbox.png" class="open-button" onclick="openForm()" style="width:40px; height:40px; position:fixed; bottom: 60px; right: 10px; cursor: pointer;">
+        <div class="chat-popup" id="myForm">
+            <form class="form-container">
+                <h1>Chat</h1>
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+        
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+            
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+            
+    </section>
 <!-- jquery for carousel images -->
 <script>
     $(document).ready(function(){
@@ -568,6 +613,16 @@
             }]
         })
     });
-</script>
+</script> 
+<script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+        
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+        </script>
+        
 </body>
 </html>
