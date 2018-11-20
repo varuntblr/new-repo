@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title  Intro to Node and MongoDB
+  body
+    h1  DATABSE
+    table
+      tbody
+        tr
+          th First Name &nbsp;
+          th Last Name &nbsp;
+          th Email &nbsp;
+          th Delete
+      each val in foo
+        tr 
+          td #{val['firstName']}
+          td #{val['lastName']}
+          td #{val['email']}  &nbsp;
+          td
+            a(href='/delete?id=' + val["_id"]) Delete
+    br
+    a(href='/') GO BACK 
