@@ -1,0 +1,55 @@
+
+.abc{
+    background-color: rgba(199, 199, 199, 0.808);
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.login{
+    float: right;
+}
+.signup{
+    float: right;
+}
+.main{
+    float: center;
+}
+.back{
+    float: left;
+}
+.login{
+    float: right;
+}
+.loginsuccess{
+    text-align: center;
+    color: #3A3838;
+}
+body{
+    background-color: rgba(194, 194, 194, 0.808);
+}
+.homelink{
+    float: left;
+}
+.navbar{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.content{
+    align-content:stretch; 
+}
+.img{
+    /* background-color: black; */
+    margin-left: auto;
+	margin-right: auto;
+    display: block;
+    height: 557px;
+    width: 884px;
+}
+.img1{
+    /* background-color: black; */
+}
+.back{
+    color: aliceblue;
+}
+.xyz{
+    background-color: rgb(179, 179, 179);
+}
