@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EMAIL VALIDATION</title>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <style>
+        body{
+            border-color: none;
+        }
+    </style>
+    <body>
+        <form method="GET">
+            Email: <input type="text" id="email" placeholder="email" onchange="validateEmail();">
+            Number: <input type="text" id="number" placeholder="Phone Number" onchange="validateNumber();">
+        </form>
+        <script>
+            function validateEmail(){
+                var email = document.getElementById('email');
+                var reg = /^[A-z].*@[a-z]+\.[a-z]+$/;
+                console.log(reg.test(email.value))
+                if(!reg.test(email.value)){
+                    email.style.borderColor = "red";
+                }
+                else{
+                    email.style.borderColor = "green";
+                }
+            }
+            function validateNumber(){
+                var num = document.getElementById('number');
+                var reg = /^\(\d{3}\)\s?\d{3}\s\d{4}$/;
+                console.log(reg.test(num.value));
+                if(!reg.test(num.value)){
+                    num.style.borderColor = "red";
+                }
+                else{
+                    num.style.borderColor = "green";
+                }
+            }
+        </script>
+    </body>
+</html>

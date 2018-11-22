@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>validation</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <style>
+        body{
+            margin: 100px 80px 0 80px;
+        }
+    </style>
+    <body>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="text" class="form-control" placeholder="NUmber" id="number">
+            </div>
+        </form>
+        <script>
+            $(document).ready(function(){
+                $('#email').keyup(function(){
+                    var reg = /^[A-z].*@[a-z]+\.([a-z]{1,3})$/;
+                    var email = this.value;
+                    if(!reg.test(email) || email == ''){
+                        $('#email').css({"border-color" : "red",
+                                          "border-width" : "5px"});
+                    }else{
+                        $('#email').css({"border-color" : "blue",
+                                          "border-width" : "5px"});
+                    }
+                })
+                $('#number').keyup(function(){
+                    var no = /^\([1-9]\d{2}\)\s?\d{3}-\d{4}$/;
+                    var num = this.value;
+                    if(!no.test(num)|| num ==''){
+                        $('#number').css({"border-color" : "red",
+                                          "border-width" : "5px"});
+                    }else{
+                        $('#number').css({"border-color" : "green",
+                                          "border-width" : "5px"});
+                    }
+                });
+            });
+
+        </script>
+    </body>
+</html>
