@@ -37,7 +37,7 @@
                     }
                 })
                 $('#number').keyup(function(){
-                    var no = /^\([1-9]\d{2}\)\s?\d{3}-\d{4}$/;
+                    var no = /^\(\d{3}\)\s?[1-9]\d{2}-\d{4}$/;
                     var num = this.value;
                     if(!no.test(num)|| num ==''){
                         $('#number').css({"border-color" : "red",
