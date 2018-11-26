@@ -6,15 +6,24 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
-var session = require('express-session')
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
+var redis = require("redis"); 
+var client  = redis.createClient();
+
 
 app.set('views', path.join(__dirname));
 app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
-app.use(session(({secret: "secret session"})));
-
+app.use(session({
+    secret: 'ssshhhhh',
+    // create new redis store.
+    store: new redisStore({ host: 'localhost', port: 4000, client: client,ttl :  260}),
+    saveUninitialized: false,
+    resave: false
+}));
 mongoose.connect("mongodb://localhost:27017/login", { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
@@ -68,6 +77,7 @@ var Data = mongoose.model('Data', Schema)
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/home.html');
+    console.log(sess);
 });
 
 app.get('/home', function(req, res){
@@ -81,7 +91,7 @@ app.post('/signup', function(req, res){
     dbs.save()
         .then(item =>{
             Data.find({}, function(err, docs){
-                 console.log(docs)
+                //  console.log(docs)
                 if(err) res.json(err);
                 else     res.render('sucess', {login:docs});
             });
@@ -90,24 +100,32 @@ app.post('/signup', function(req, res){
             res.status(400).sendFile(__dirname + '/signupfailed.html'); 
         });
 });
+app.get('/check',function(req,res){
+    console.log(req.session.ur)
+     if(req.session.ur == undefined)
+    { 
+        res.redirect("/login");
+    }else{
+        res.status(400).sendFile(__dirname + '/allogin.html');
+    }
+
+})
 app.get('/login', function(req, res){
     res.sendFile(__dirname + '/login.html');
-
+   
 });
 
 app.post('/loginsucess', function(req, res){
     sess = req.session;
-    sess.name = req.body.username;
-    Data.findOne({username: sess.name}, function(err, user){
+    Data.findOne({username: req.body.username}, function(err, user){
         sess.ur = user;
-        sess.pass = req.body.password;
-        console.log(sess)
+        // console.log(sess)
         if(sess.ur == null){
             res.sendFile(__dirname + '/err.html'); 
         }
-        else if(user.username === sess.name)
+        else if(user.username === req.body.username)
         {
-            user.comparePassword(sess.pass, function(err, isMatch) {
+            user.comparePassword(req.body.password, function(err, isMatch) {
                 if(isMatch){
                     res.sendFile(__dirname + '/loginsuccess.html');
                 }else {
@@ -127,7 +145,9 @@ app.get('/logout', function(req, res){
         if(err){
             res.sendFile(__dirname + '/err.html');
         }else{
-            res.redirect('/login');
+            req.session = null
+            // console.log(sess)
+            res.sendFile(__dirname + '/logout.html');        
         }
     });
 });
@@ -136,8 +156,7 @@ app.get('/delete', function(req, res){
     res.sendFile(__dirname + '/delete.html');
 });
 app.post('/deletesuccess', function(req, res){
-    sess = req.session
-    console.log(sess)
+    // console.log(sess)
     Data.findOne({username: req.body.username}, function(err, user){
         if(user == null){
             res.sendFile(__dirname + '/err.html'); 
