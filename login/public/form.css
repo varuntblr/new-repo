@@ -11,7 +11,7 @@
     float: right;
 }
 .main{
-    float: center;
+    text-align: center;
 }
 .back{
     float: left;
@@ -44,12 +44,12 @@ body{
     height: 557px;
     width: 884px;
 }
-.img1{
-    /* background-color: black; */
-}
 .back{
     color: aliceblue;
 }
 .xyz{
     background-color: rgb(179, 179, 179);
+}
+.HOME{
+    float: right;
 }

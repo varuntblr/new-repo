@@ -1,12 +1,11 @@
 doctype html
-html(lang='en')
+html
   head
     link(rel='stylesheet', type='text/css', href='form.css')
-    title Sucess
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
   body
-    .main
-    h1 SIGN UP SUCCESSFUL 
-    .back
-      a(href='/home') Go Back 
-    .login
-      a(href='/login') Login
+    h1.loginsuccess SIGNUP SUCCESSFULL
+    a.btn.btn-primary(href='/home') Home
+    a.btn.btn-primary.HOME(href='/login') Login
